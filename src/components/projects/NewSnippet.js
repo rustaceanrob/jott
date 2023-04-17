@@ -31,25 +31,24 @@ export default function NewSnippet({uid, lang, frameworks, projectId, setDisplay
       }
     
     const addSnippet = async () => {
-        let response
-        getSnippetResponse({lang: lang, frames: formatList(frameworks), prompt: prompt}).then((response) => {
+        setLoading(true)
+        const response = getSnippetResponse({lang: lang, frames: formatList(frameworks), prompt: prompt}).then((response) => {
             const code = response.data.content.trim()
-            response = code
+            addDoc(collection(db, `users/${uid}/projects/${projectId}/snippets/`), {"name": name, "prompt": prompt, "lang": lang, "frameworks": frameworks, "modelResponse": code}).then((response) => {
+                setLoading(false)
+                setDisplay("project")
+            }).catch((error) => {
+                console.log(error)
+                setError(true)
+            })
             setLoading(false)
+            setDisplay("project")
+            
         }).catch((error) => {
             console.log(error)
             setError(true)
             setLoading(false)
-            response = ''
         })
-        try {
-            setLoading(true)
-            await addDoc(collection(db, `users/${uid}/projects/${projectId}/snippets`), {"name": name, "prompt": prompt, "lang": lang, "frameworks": frameworks, "modelResponse": response});
-            setDisplay("project")
-        } catch (error) {
-            setLoading(false)
-            setError(true)
-        }
     }
     const handleSubmit = (event) => {
         event.preventDefault()

@@ -23,7 +23,7 @@ export default function Sidebar({setFeature}) {
                 </button>
             </div>
             <div className='pt-5 pb-5 border-b border-gray-700'>
-                <button className='px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 text-sm font-semibold md:block hidden'>Settings</button>
+                <button className='px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 text-sm font-semibold md:block hidden'>Account</button>
             </div>
         </div>
         {/* <div className="relative h-[40%] z-[200]">

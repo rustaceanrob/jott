@@ -65,7 +65,7 @@ export default function Login() {
                     <h1 className='font-extrabold sm:text-5xl text-3xl'>Welcome to <span className='text-transparent bg-clip-text bg-gradient-to-t from-purple-800 to-purple-300'>Jott.</span></h1>
                 </div>
                 <div className='flex flex-row hidden lg:block items-center pt-10 transition transform duration-300 ease-in-out'>
-                    <h1 className='font-extrabold sm:text-4xl xl:text-5xl text-3xl'>By programmers, for programmers.</h1>
+                    <h1 className='font-extrabold sm:text-4xl xl:text-5xl text-3xl'>Code anywhere, on any device.</h1>
                 </div>
                 <div className='flex flex-row justify-center items-center pt-20 pb-5'>
                     <h3 className='font-extrabold text-sm justify-center items-center'>Please sign in or sign up.</h3>

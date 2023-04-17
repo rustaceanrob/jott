@@ -54,14 +54,20 @@ exports.getChainResponse = functions.runWith({ secrets: ['OPENAI']}).https.onCal
 
 exports.getSnippetResponse = functions.runWith({ secrets: ['OPENAI']}).https.onCall((data, context) => {
     checkAuthPrecondition(context)
-    const chain = data.prompt
+    let chain
     const frames = data.frames
     const lang = data.lang
     if (frames !== "") {
-        chain.unshift({"role": "user", "content": "I am using " + frames})
+        chain = [{"role": "system", "content": snippetCodeSystemMessage},
+                {"role": "user", "content": "I am programming with " + lang + "."}, 
+                {"role": "user", "content": "I am using " + frames}, 
+                {"role": "user", "content": data.prompt}]
+        
+    } else {
+        chain = [{"role": "system", "content": snippetCodeSystemMessage},
+                {"role": "user", "content": "I am programming with " + lang + "."}, 
+                {"role": "user", "content": data.prompt}]
     }
-    chain.unshift({"role": "user", "content": "I am programming with " + lang + "."})
-    chain.unshift({"role": "system", "content": snippetCodeSystemMessage})
     functions.logger.log(chain)
     const configuration = new Configuration({
         apiKey: process.env.OPENAI,

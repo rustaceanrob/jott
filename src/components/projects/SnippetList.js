@@ -1,11 +1,30 @@
 import React, {useState, useEffect} from 'react'
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { MdOutlineAddBox, MdSnippetFolder } from 'react-icons/md';
+import { MdOutlineAddBox } from 'react-icons/md';
+import { BsCode } from 'react-icons/bs'
 import { AiOutlineCode } from "react-icons/ai"
 
-export default function SnippetList({uid, projectName, projectId, setDisplay}) {
+export default function SnippetList({uid, projectName, projectId, setDisplay, setSnippetId}) {
     const [snippets, setSnippets] = useState([])
+
+    async function deleteProjectById(event) {
+      event.preventDefault()
+      try {
+        const projectRef = doc(collection(db, `users/${uid}/projects`), projectId);
+        await deleteDoc(projectRef);
+        setDisplay("main")
+      } catch (error) {
+        setDisplay("main")
+        console.error("Error deleting project: ", error);
+      }
+    }
+
+    const handleSnippetView = (event, snipId) =>{
+      event.preventDefault()
+      setSnippetId(snipId)
+      setDisplay('snippetview')
+    }
 
     useEffect(() => {
       const projectsRef = collection(db, `users/${uid}/projects/${projectId}/snippets`)
@@ -46,9 +65,9 @@ export default function SnippetList({uid, projectName, projectId, setDisplay}) {
                       <p className="text-gray-500 break-all">{snip.prompt}</p>
                     </div>
                     <div>
-                      <button className="flex flex-row font-medium py-2 px-4 rounded-md border border-gray-700 cursor-pointer hover:animate-pulse justify-center items-center">
+                      <button className="flex flex-row font-medium py-2 px-4 rounded-md border border-gray-700 cursor-pointer hover:animate-pulse justify-center items-center" onClick={(event) => handleSnippetView(event, snip.id)}>
                           <h1 className='text-gray-300 pr-2'>View</h1>
-                          <MdSnippetFolder className='text-gray-300' size={20}/>
+                          <BsCode className='text-gray-300' size={20}/>
                       </button>
                       <div className='flex flex-row pt-2 justify-center items-center'>
                           <AiOutlineCode className="text-gray-300" size={15}/>
@@ -65,8 +84,11 @@ export default function SnippetList({uid, projectName, projectId, setDisplay}) {
             </div>
           )
         }
-        <div className='flex flex-col w-full justify-end items-end pb-5 pr-5 pt-5'>
-            <button className='px-2 py-2 flex flex-row border border-gray-700 rounded-md' onClick={() => setDisplay("project")}>
+        <div className='flex flex-row  w-full justify-between items-end pl-5 pb-5 pr-5 pt-5'>
+            <button className='px-2 py-2 flex flex-row hover:animate-pulse' onClick={(event) => deleteProjectById(event)}>
+                <h1 className='font-bold text-gray-500 pr-2'>Delete Project</h1>
+            </button>
+            <button className='px-2 py-2 flex flex-row border border-gray-700 rounded-md' onClick={() => setDisplay("main")}>
                 <h1 className='font-bold text-gray-300'>Back</h1>
             </button>
         </div>

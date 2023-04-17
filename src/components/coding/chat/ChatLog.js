@@ -11,7 +11,7 @@ export default function ChatLog({lang, chain, responseLoading}) {
                if (message['role'] === 'user') {
                   return <UserChat message={message["content"]}/>
                } else if (message['role'] === 'assistant') {
-                return <SystemChat lang={lang} message={message["content"]}/>
+                return <SystemChat lang={lang} message={message["content"]} isSnip={false}/>
                }
             })
         }

@@ -14,7 +14,6 @@ const ProgressBar = ({ progress, setProgress, items }) => {
 
   useEffect(() => {
     calculateProgress()
-    console.log(progress)
   }, [items])
 
   return (

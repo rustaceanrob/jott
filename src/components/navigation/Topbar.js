@@ -10,8 +10,7 @@ export default function Topbar({setFeature}) {
             {/* <img className="img-thumbnail object-contain h-10 w-10 rounded-3xl hidden sm:block" src={Logo} alt={""}/> */}
             <button className='pl-4 px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 font-extrabold sm:block hidden' onClick={() => setFeature("coding")}>Code</button>
             <button className='px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 font-extrabold sm:block hidden pr-4' onClick={() => setFeature("projects")}>Projects</button>
-            <button className='border-l border-gray-700 pl-4 px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 font-semibold md:block hidden'>Settings</button>
-            <button className='px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 font-semibold md:block hidden'>Account</button>
+            <button className='border-l border-gray-700 pl-4 px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 font-semibold md:block hidden'>Account</button>
             <button onClick={() => setMobileNav(!mobileNav)}><MdMenu className='hover:scale-110 duration-200 block sm:hidden' size={20}/></button>
             {
                 mobileNav ? (
@@ -21,7 +20,6 @@ export default function Topbar({setFeature}) {
                             <div className='flex flex-col  pt-10 pb-10 border rounded-md bg-gradient-to-r from-gray-900 to-gray-700 '>
                                 <button className='font-extrabold px-2 py-2 hover:scale-110 duration-200'>Code</button>
                                 <button className='font-extrabold px-2 py-2 hover:scale-110 duration-200'>Projects</button>
-                                <button className='font-extrabold px-2 py-2 hover:scale-110 duration-200'>Settings</button>
                                 <button className='font-extrabold px-2 py-2 hover:scale-110 duration-200'>Account</button>
                             </div>  
                         </div>    
