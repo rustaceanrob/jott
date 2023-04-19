@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { MdOutlineAddBox, MdSnippetFolder } from 'react-icons/md';
-import { AiOutlineCode, AiOutlineLoading } from "react-icons/ai"
+import { AiOutlineLoading } from "react-icons/ai"
 
 export default function ProjectsList({uid, setDisplay, setProjectId, setProjectName}) {
     const [projects, setProjects] = useState()
@@ -28,7 +28,7 @@ export default function ProjectsList({uid, setDisplay, setProjectId, setProjectN
 
     return (
       <div className='flex flex-col items-center justify-center'>
-        {!projects && <AiOutlineLoading className='pt-5 animate-spin' size={20}/> }
+        {!projects && <div className='pt-5 pb-5'><AiOutlineLoading className='animate-spin' size={20}/></div> }
         {
           projects ? (
             <div className=' w-full'>
@@ -60,10 +60,6 @@ export default function ProjectsList({uid, setDisplay, setProjectId, setProjectN
                                 <h1 className='text-gray-300 pr-2'>Snippets</h1>
                                 <MdSnippetFolder className='text-gray-300' size={20}/>
                             </button>
-                            <div className='flex flex-row pt-2 justify-center items-center'>
-                                <AiOutlineCode className="text-gray-300" size={15}/>
-                                <h1 className='pr-2 text-gray-300 text-sm font-bold pl-2'>{project.lang}</h1>
-                            </div>
                           </div>
                         </div>
                       ))}

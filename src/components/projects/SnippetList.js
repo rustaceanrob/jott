@@ -3,10 +3,10 @@ import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { MdOutlineAddBox } from 'react-icons/md';
 import { BsCode } from 'react-icons/bs'
-import { AiOutlineCode } from "react-icons/ai"
+import { AiOutlineCode, AiOutlineLoading } from "react-icons/ai"
 
 export default function SnippetList({uid, projectName, projectId, setDisplay, setSnippetId}) {
-    const [snippets, setSnippets] = useState([])
+    const [snippets, setSnippets] = useState()
 
     async function deleteProjectById(event) {
       event.preventDefault()
@@ -40,8 +40,9 @@ export default function SnippetList({uid, projectName, projectId, setDisplay, se
 
     return (
         <div className='flex flex-col items-center justify-center'>
+        {!snippets && <div className='pt-5'><AiOutlineLoading className='animate-spin' size={20}/></div> }
         {
-          snippets.length === 0 ? (
+          snippets && snippets.length === 0 ? (
             <div className='pt-5 pb-5 space-y-5'>
                 <h1 className='font-extrabold text-gray-400 pb-2 border-b border-gray-700'>{projectName}</h1>
                 <div className='flex flex-col px-5 py-5 border border-gray-700 rounded-md justify-center items-center pt-5'>
@@ -55,7 +56,7 @@ export default function SnippetList({uid, projectName, projectId, setDisplay, se
           ) : (
             <div className='flex flex-col justify-center items-center sm:pl-10 sm:pr-10 lg:pl-20 lg:pr-20 pb-5 w-full'>
               <div className="grid grid-cols-1 gap-2 sm:gap-4 md:grid-cols-2 pt-10 pb-10 p-5 w-full">
-                {snippets.map((snip) => (
+                {snippets?.map((snip) => (
                   <div
                     key={snip.id}
                     className="border border-gray-700 w-full rounded-md shadow-md flex items-start justify-between px-5 py-5"

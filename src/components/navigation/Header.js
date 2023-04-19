@@ -13,9 +13,9 @@ export default function Header({user, setFeature, handleSignOut}) {
                 <span className='text-sm font-bold text-gray-300'>Sign Out</span>
                 <CiLogout size={16} className='sm:ml-2 ml-1'/>
             </button>
-            <button className='pl-4 pr-2'>
+            {user?.photoURL && <button className='pl-4 pr-2' onClick={() => setFeature('account')}>
                 <img className="img-thumbnail border border-gray-500 object-contain h-10 w-10 rounded-3xl" src={user?.photoURL} alt={""}/>
-            </button>
+            </button>}
         </div>
     </div>
   )

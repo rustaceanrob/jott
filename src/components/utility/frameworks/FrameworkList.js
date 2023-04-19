@@ -4,12 +4,12 @@ import { MdOutlineAddBox } from 'react-icons/md'
 
 export default function FrameworkList({frameworks, setDisplay, setFrameworks}) {
     const [wildcard, setWildcard] = useState("")
-    const categories = ["Popular Miscellaneous", "Web and Deployment", "Data and Machine Learning", "Cloud Service Providers"] //, "Web", "Cloud Service Providers", "Machine Learning"
-    const frames = {"Popular Miscellaneous": ["ASP.NET MVC", "Compojure", "Cocoa Touch", "Catalyst"," CodeIgniter", 
+    const categories = ["Popular Miscellaneous", "Web and Mobile", "Data and Machine Learning", "Cloud Service Providers"] //, "Web", "Cloud Service Providers", "Machine Learning"
+    const frames = {"Popular Miscellaneous": ["Compojure", "Cocoa Touch", "Catalyst"," CodeIgniter", 
                                 "Combine", "Cowboy", "Chicago Boss", "Django", "Fable", "Flask", "Grails","Hibernate","Hanami",
                                 "Ktor", "Ruby on Rails", "Sinatra", "Spring Boot", "Struts", "SwiftUI"], 
-                      "Web and Deployment": ["Angular", "Bootstrap", "Express.js", "Firebase" ,"Node.js", "React", "React Native", "Tailwind" ,"Vue.js"], 
-                      "Data and Machine Learning": ["Gen.jl", "ggplot2", "Flux.jl", "PyTorch", "Shiny", "SKLearn", "TensorFlow"], 
+                      "Web and Mobile": ["Angular", "Bootstrap", "Express.js", "Firebase" , "Flutter", "Node.js", "React", "React Native", "Tailwind" ,"Vue.js"], 
+                      "Data and Machine Learning": ["Gen.jl", "ggplot2", "Flux.jl", "NumPy", "Pandas", "PyTorch", "Shiny", "StatsModels", "SKLearn", "TensorFlow"], 
                       "Cloud Service Providers": ["AWS", "Azure","DigitalOcean", "GCP", "IBM Cloud", "OCI (Oracle)", "OpenShift",
                                                   "Rackspace", "VMware Cloud"]}
     const handleAdd = (event) => {

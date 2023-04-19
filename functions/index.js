@@ -44,11 +44,47 @@ exports.getChainResponse = functions.runWith({ secrets: ['OPENAI']}).https.onCal
     const aiRes = openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: chain,
-        max_tokens: 2000, 
         temperature: 0.1,
     }).then((response) => {
         return response.data.choices[0].message;
     })
+    return aiRes
+})
+
+exports.getEdit = functions.runWith({ secrets: ['OPENAI']}).https.onCall((data, context) => {
+    checkAuthPrecondition(context)
+    let chain
+    const frames = data.frames
+    const lang = data.lang
+    if (frames !== "") {
+        chain = [{"role": "system", "content": snippetCodeSystemMessage},
+                {"role": "user", "content": "I am programming with " + lang + ". I am using " + frames + "."},
+                {"role": "user", "content": data.prompt}, 
+                {"role": "assistant", "content": data.previousMessage}, 
+                {"role": "user", "content": data.edit}]
+        
+    } else {
+        chain = [{"role": "system", "content": snippetCodeSystemMessage},
+                {"role": "user", "content": "I am programming with " + lang}, 
+                {"role": "user", "content": data.prompt}, 
+                {"role": "assistant", "content": data.previousMessage}, 
+                {"role": "user", "content": data.edit}]
+    }
+    functions.logger.log(chain)
+    const configuration = new Configuration({
+        apiKey: process.env.OPENAI,
+    });
+    const openai = new OpenAIApi(configuration);
+    const aiRes = openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: chain,
+        max_tokens: 2000, 
+        temperature: 0.1,
+    }).then((response) => {
+        return response.data.choices[0].message;
+    }).catch((error) => [
+        functions.logger.log(error)
+    ])
     return aiRes
 })
 

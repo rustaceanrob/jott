@@ -4,7 +4,7 @@ import { AiOutlineCode } from 'react-icons/ai'
 
 export default function Sidebar({setFeature}) {
   return (
-    <div className='hidden h-[80%] w-[20%] xl:block justify-center items-center border-gray-700 z-[5] bg-gray-900'>
+    <div className='hidden h-[80%] w-[20%] xl:inline justify-center items-center border-gray-700 z-[5] bg-gray-900'>
         <div className='flex flex-col gap-4 justify-center items-center pt-10 z-[10] pb-10'>
             <div className='flex w-[80%] cursor-pointer justify-center items-center border border-gray-400 rounded-md duration-200 hover:bg-gray-600/50 hover:animate-pulse' onClick={() => setFeature("coding")}>
                 <button className='flex flex-row justify-center items-center px-2 py-2'>
@@ -23,7 +23,7 @@ export default function Sidebar({setFeature}) {
                 </button>
             </div>
             <div className='pt-5 pb-5 border-b border-gray-700'>
-                <button className='px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 text-sm font-semibold md:block hidden'>Account</button>
+                <button className='px-2 py-2 justify-center items-center text-gray-300 hover:animate-pulse duration-200 text-sm font-semibold md:block hidden' onClick={() => setFeature('account')}>Account</button>
             </div>
         </div>
         {/* <div className="relative h-[40%] z-[200]">

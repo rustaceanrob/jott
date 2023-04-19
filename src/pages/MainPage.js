@@ -14,6 +14,9 @@ export default function MainPage() {
         if (!user) {
             navigate('/login')
         }
+        if (!user.emailVerified) {
+            navigate('/login')
+        }
     }, [user])
     
     const handleSignOut = async () => {
@@ -30,7 +33,7 @@ export default function MainPage() {
         <>
             <div className='bg-gray-900 flex flex-col object-cover h-screen text-white z-[1]'>
                 <Header user={user} setFeature={setFeature} handleSignOut={handleSignOut}/>
-                <div className='flex flex-row xl:pl-0 pl-5 pr-5 xl:pr-20 bg-gray-900'>
+                <div className='flex flex-row xl:pl-0 pl-5 pr-5 xl:pr-20 bg-gray-900 pb-5'>
                     <Sidebar setFeature={setFeature}/>
                     <FeatureContainer feature={feature}/>
                 </div>

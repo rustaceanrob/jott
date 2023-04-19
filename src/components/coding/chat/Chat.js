@@ -19,7 +19,7 @@ export default function Chat({lang, frameworks, chain, setChain}) {
               <div className='hidden lg:block w-full'>
                 <Tip title={"Refactor Code"} icon={<BsCodeSlash size={15}/>} description={"Attach code and reference it with your questions"}/>
               </div>
-              <Tip title={"Save Responses"} icon={<BsDownload size={15}/>} description={"Download code, copy code, and add to your projects"}/>
+              <Tip title={"Save Responses"} icon={<BsDownload size={15}/>} description={"Copy code and add to your projects"}/>
               <Tip title={"Ready?"} icon={<BsFillLightningChargeFill className="text-green-600" size={15}/>} description={"Enter a chat to get started"}/>
             </div>
           )

@@ -60,6 +60,9 @@ export default function NewSnippet({uid, lang, frameworks, projectId, setDisplay
         <div className='pt-5 pb-5'>
             <div className='pl-20 pr-20 flex flex-col justify-center items-center'>
                 <h1 className='font-extrabold text-md sm:text-lg lg:text-xl text-gray-300 border-b pb-2 border-gray-700'>Describe your code</h1>
+                <div className='flex flex-row justify-center items-center pt-5'>
+                    <h1 className='font-semibold text-gray-300 text-sm sm:text-md bg-gray-700/50 px-4 py-4 rounded-md border border-gray-700'>Your language and frameworks are taken into account along with your prompt</h1>
+                </div>
                 <div className='grid grid-cols-1 gap-4 justify-center items-center w-full pt-5'>
                     <div className='flex flex-col justify-start items-start'>
                         <h1 maxlength="50" className='text-gray-300 font-bold pr-2 pb-2'>Name</h1>

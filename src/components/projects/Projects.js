@@ -9,10 +9,11 @@ export default function Projects({lang, setLang, frameworks, setFrameworks}) {
     const [projectName, setProjectName] = useState('')
     const [projectId, setProjectId] = useState('')
     const [snippetId, setSnippetId] = useState('')
+    const showUpload = false
 
     return (
         <div className='flex flex-col justify-between w-full bg-gray-900'>
-            <Toolbar lang={lang}  setLang={setLang} setDisplay={setDisplay} frameworks={frameworks}/>
+            <Toolbar lang={lang}  setLang={setLang} setDisplay={setDisplay} frameworks={frameworks} showUpload={showUpload}/>
             <Display  uid={user?.uid} projectId={projectId} setProjectId={setProjectId} 
                         projectName={projectName} setProjectName={setProjectName} display={display} 
                         setDisplay={setDisplay} lang={lang} setLang={setLang} snippetId={snippetId}

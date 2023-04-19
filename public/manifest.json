@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Jott",
+  "name": "Jott",
   "icons": [
     {
       "src": "jott-small-rounded.png",

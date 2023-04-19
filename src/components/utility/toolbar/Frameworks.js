@@ -23,7 +23,7 @@ export default function Frameworks({frameworks, setDisplay}) {
                 return ( 
                   <div className='flex flex-row justify-center items-center pr-2'>
                     <div className='flex flex-row border justify-center items-center rounded-md border-gray-700 px-2 py-1'>
-                      <h1 className=' font-semibold text-sm text-gray-300'>{frame}</h1>
+                      <h1 className=' pl-1 font-semibold text-sm text-gray-300'>{frame}</h1>
                       <FrameworkIcon frame={frame}/>
                     </div>
                   </div>

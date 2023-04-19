@@ -5,17 +5,17 @@ import { SiFirefoxbrowser, SiGooglechrome, SiMicrosoftedge } from 'react-icons/s
 import { BsAndroid2, BsApple } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { UserAuth } from '../context/AuthContext'
+import { CiMail } from 'react-icons/ci'
 
 export default function Login() {
     const [message, setMessage] = useState('')
     const [signInError, setSignInError] = useState(false)
     const navigate = useNavigate()
-    const { user, signInWithGooglePopUp, signInWithGithubPopUp} = UserAuth()
+    const { user, signInWithGooglePopUp, signInWithGithubPopUp } = UserAuth()
 
     const handleGoogle = async () => {
         try {
             await signInWithGooglePopUp()
-            navigate('/')
         } catch (error) {
             setSignInError(true)
         }                                  
@@ -24,7 +24,6 @@ export default function Login() {
     const handleGithub = async () => {
         try {
             await signInWithGithubPopUp()
-            navigate('/')
         } catch (error) {
             setSignInError(true)
         }    
@@ -39,11 +38,11 @@ export default function Login() {
     // }
 
     useEffect(() => {
-        if (user) {
-            navigate('/')
-        }
         const now = new Date()
         const hours = now.getHours()
+        if(user && user.emailVerified) {
+            navigate('/')
+        }
         if (hours < 12) {
             setMessage('Good morning ')
         } else if (hours < 16) {
@@ -62,15 +61,23 @@ export default function Login() {
                     <h1 className='font-extrabold sm:text-xl text-lg pb-5'>{message}</h1>
                 </div>
                 <div className='flex flex-row pb-5 justify-center sm:justify-start items-center transition transform duration-300 ease-in-out'>
-                    <h1 className='font-extrabold sm:text-5xl text-3xl'>Welcome to <span className='text-transparent bg-clip-text bg-gradient-to-t from-purple-800 to-purple-300'>Jott.</span></h1>
+                    <h1 className='font-extrabold sm:text-3xl md:text-5xl text-xl'>Welcome to <span className='text-transparent bg-clip-text bg-gradient-to-t from-purple-800 to-purple-300'>Jott.</span></h1>
                 </div>
                 <div className='flex flex-row hidden lg:block items-center pt-10 transition transform duration-300 ease-in-out'>
                     <h1 className='font-extrabold sm:text-4xl xl:text-5xl text-3xl'>Code anywhere, on any device.</h1>
                 </div>
-                <div className='flex flex-row justify-center items-center pt-20 pb-5'>
-                    <h3 className='font-extrabold text-sm justify-center items-center'>Please sign in or sign up.</h3>
+                <div className='flex flex-row justify-center items-center sm:pt-20 pt-5 pb-5'>
+                    <h3 className='font-extrabold text-sm justify-center items-center'>Choose how to sign in</h3>
                 </div>
                 <div className='grid sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-2 bg-gray-800 border rounded justify-between items-center px-5 py-5 md:pl-10 md:pr-10 xl:pl-40 xl:pr-40'>
+                    <button className='flex flex-row justify-center items-center bg-gray-700 px-2 py-2 border rounded-md hover:scale-110 hover:cursor-pointer duration-200' onClick={() => navigate('/loginemail')}>
+                        <h1 className='font-bold pr-2'>Sign In</h1>
+                        <CiMail size={20}/>
+                    </button>
+                    <button className='flex flex-row justify-center items-center bg-gray-700 px-2 py-2 border px-2 py-2 rounded-md hover:scale-110 hover:cursor-pointer duration-200' onClick={() => navigate('/register')}>
+                        <h1 className='font-bold pr-2'>Sign Up</h1>
+                        <CiMail className='text-white' size={20}/>
+                    </button>
                     <button onClick={handleGoogle} className='flex flex-row justify-center items-center bg-gray-700 px-2 py-2 border rounded-md hover:scale-110 hover:cursor-pointer duration-200'>
                         <h1 className='font-bold pr-2'>Google</h1>
                         <FcGoogle size={20}/>

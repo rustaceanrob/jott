@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { AiFillCopy, AiOutlineDownload, AiFillSave } from 'react-icons/ai'
+import { AiFillCopy } from 'react-icons/ai'
 import { BiSave } from 'react-icons/bi'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { hopscotch } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -17,8 +17,9 @@ export default function SystemChat({message, lang, isSnip}) {
     useEffect(() => {
         const regex = /```[^`\s]*\s?/g
         setBlocks(message.split(regex))
-        setStyledLang(lang.toLowerCase())
+        setStyledLang(lang.replace('-', '').replace('++', 'pp').replace('#', 'sharp').replace('JSX', 'javascript').replace('TSX', 'typescript').toLowerCase())
     }, [])
+    
     return (
             <div className='pt-5'>
                 {blocks.map((codes, index) => {
@@ -44,12 +45,6 @@ export default function SystemChat({message, lang, isSnip}) {
                                         <BiSave/>
                                     </button>
                                     }
-                                    <div className='pl-2 hidden sm:block'>
-                                        <button className='border border-gray-700 text-gray-300 flex flex-row justify-center items-center px-1 py-1 rounded-md hover:animate-pulse' onClick={(event) => copyToClip(event, codes)}>
-                                            <h1 className='font-extrabold text-xs pr-2'>Download Code</h1>
-                                            <AiOutlineDownload/>
-                                        </button>
-                                    </div>
                                     <div className='pl-2 hidden sm:block'>
                                         <button className='border border-gray-700 text-gray-300 flex flex-row justify-center items-center px-1 py-1 rounded-md hover:animate-pulse' onClick={(event) => copyToClip(event, codes)}>
                                             <h1 className='font-extrabold text-xs pr-2'>Copy Code</h1>
