@@ -9,7 +9,7 @@ import SnippetView from './SnippetView'
 
 export default function Display({uid, projectId, projectName, setProjectName, setProjectId, display, setDisplay, snippetId, setSnippetId, lang, setLang, frameworks, setFrameworks}) {
   return (
-    <div className='bg-gray-900 justify-between items-center'>
+    <div className='bg-gray-950 justify-between items-center'>
         {
             {
                 'main': <ProjectsList uid={uid} setDisplay={setDisplay} setProjectId={setProjectId} setProjectName={setProjectName}/>,

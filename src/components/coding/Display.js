@@ -11,7 +11,7 @@ export default function Display({chain, setChain, display, setDisplay, lang, set
   const { user } = UserAuth()
 
   return (
-    <div className='bg-gray-900 justify-center items-center'>
+    <div className='bg-gray-950 justify-center items-center'>
         {
             {
                 'main': <Chat lang={lang} frameworks={frameworks} chain={chain} setChain={setChain} setDisplay={setDisplay} setPush={setPush}/>,

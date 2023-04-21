@@ -9,7 +9,7 @@ export default function Coding({lang, setLang, frameworks, setFrameworks}) {
     const showUpload = true
     
     return (
-        <div className='w-full bg-gray-900'>
+        <div className='w-full bg-gray-950'>
             <Toolbar lang={lang}  setLang={setLang} setDisplay={setDisplay} frameworks={frameworks} showUpload={!showUpload}/>
             <Display display={display} setDisplay={setDisplay} 
                     chain={chain} setChain={setChain}

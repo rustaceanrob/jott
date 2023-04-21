@@ -12,7 +12,7 @@ export default function Projects({lang, setLang, frameworks, setFrameworks}) {
     const showUpload = false
 
     return (
-        <div className='flex flex-col justify-between w-full bg-gray-900'>
+        <div className='flex flex-col justify-between w-full bg-gray-950'>
             <Toolbar lang={lang}  setLang={setLang} setDisplay={setDisplay} frameworks={frameworks} showUpload={showUpload}/>
             <Display  uid={user?.uid} projectId={projectId} setProjectId={setProjectId} 
                         projectName={projectName} setProjectName={setProjectName} display={display} 

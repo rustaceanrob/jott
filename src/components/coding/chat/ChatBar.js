@@ -74,7 +74,7 @@ export default function ChatBar({lang, frameworks, chain, setChain, setResponseL
 
   return (
     <div className='flex flex-col w-full'>
-      <div className='flex flex-row justify-end items-end w-full pt-10 bg-gray-900 pb-5'>
+      <div className='flex flex-row justify-end items-end w-full pt-10 bg-gray-950 pb-5'>
         <div className='flex flex-row w-full border-t border-gray-700 justify-center items-center pt-5 pl-5 pr-5 xl:pl-40 xl:pr-20 lg:pl-20 lg:pr-20 md:pl-10 md:pr-10'>
         <textarea type='text' rows="2" placeholder="Type your chat here" className='text-md w-full border-gray-700 focus:outline-none bg-gray-800/80 rounded-md px-2 py-2 border border-gray-700'
           value={inputValue}
