@@ -4,7 +4,7 @@ import { BiSave } from 'react-icons/bi'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { hopscotch } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-export default function SystemChat({message, lang, isSnip}) {
+export default function SystemChat({message, lang, isSnip, setDisplay, setPush}) {
     const [blocks, setBlocks] = useState([])
     const [styledLang, setStyledLang] = useState(lang.toLowerCase())
 
@@ -12,6 +12,12 @@ export default function SystemChat({message, lang, isSnip}) {
         event.preventDefault()
         await navigator.clipboard.writeText(codes)
         alert("Copied to clipboard!")
+    }
+
+    const addToProjects = (event) => {
+        event.preventDefault()
+        setPush(message)
+        setDisplay('addtoprojects')
     }
 
     useEffect(() => {
@@ -40,7 +46,7 @@ export default function SystemChat({message, lang, isSnip}) {
                             <div className='rounded-sm pt-2 pb-2'>
                                 <div className='flex flex-row justify-end items-end pl-2 pr-2 pb-2 '>
                                     {!isSnip && 
-                                    <button className='border border-gray-700 text-gray-300 flex flex-row justify-center items-center px-1 py-1 rounded-md hover:animate-pulse ' onClick={(event) => copyToClip(event, codes)}>
+                                    <button className='border border-gray-700 text-gray-300 flex flex-row justify-center items-center px-1 py-1 rounded-md hover:animate-pulse ' onClick={(event) => addToProjects(event)}>
                                         <h1 className='font-extrabold text-xs pr-2'>Save to Projects</h1>
                                         <BiSave/>
                                     </button>

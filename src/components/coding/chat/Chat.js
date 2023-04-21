@@ -5,13 +5,13 @@ import { HiDocumentSearch } from 'react-icons/hi'
 import ChatBar from './ChatBar'
 import ChatLog from './ChatLog'
 
-export default function Chat({lang, frameworks, chain, setChain}) {
+export default function Chat({lang, frameworks, chain, setChain, setDisplay, setPush}) {
   const [responseLoading, setResponseLoading] = useState(false)
   return (
     <div className='flex flex-col items-center justify-center pb-5'>
         {
           chain.length !== 0 ? (
-            <ChatLog lang={lang} chain={chain} responseLoading={responseLoading}/>
+            <ChatLog lang={lang} chain={chain} responseLoading={responseLoading} setDisplay={setDisplay} setPush={setPush}/>
           ) : (
             <div className='flex flex-col justify-center items-center'>
               <Tip title={"This is your coding assistant"} icon={<BsFillInfoSquareFill size={15}/>} description={"Ask a question and get code and comments back as a response"}/>

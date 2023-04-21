@@ -16,8 +16,7 @@ export default function Register() {
     const handleSignIn = (event) => {
         event.preventDefault()
         setLoading(true)
-        createEmail(email, password)
-        setEmailSent(true)
+        createEmail(email, password, setError, setLoading, setEmailSent)
     }
 
     const handleIsVerified = (event) => {
@@ -52,13 +51,18 @@ export default function Register() {
                         )}
                     </div>
                 </div>
+                {error && <div className='pt-5 pb-5 flex flex-col justify-center items-center'>
+                                <h1 className='font-bold px-5 py-5 border border-gray-700 rounded-md text-xs text-gray-300'>
+                                    There was an error registering you. Try a different password.
+                                </h1>
+                            </div>}
                 {emailSent && <div className='pt-5 pb-5 flex flex-col justify-center items-center'>
                                 <h1 className='font-bold px-5 py-5 border border-gray-700 rounded-md text-xs text-gray-300'>A verfication was sent to your email. 
                                 After you are verified, click this <button className="font-extrabold underline" onClick={handleIsVerified}>button</button>
                                 </h1>
                             </div>
                 }
-                <button className='justify-center items-center pt-5 text-sm text-gray-500 font-bold hover:scale-110 duration-200' onClick={() => navigate('/login')}>Main Login</button>
+                <button className='justify-center items-center pt-5 text-sm text-gray-500 font-bold hover:scale-110 duration-200' onClick={() => navigate('/login')}>Back</button>
             </div>
         </div>
   )
