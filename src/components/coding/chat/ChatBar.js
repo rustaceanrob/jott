@@ -65,7 +65,7 @@ export default function ChatBar({lang, frameworks, chain, setChain, setResponseL
           setChain([...chain, {"role": "assistant", "content": code}])
           setResponseLoading(false)
       }).catch((error) => {
-        setChain([...chain, {"role": "assistant", "content": "There was an error getting that response. You can try again, but the chat likely got too long."}])
+        setChain([...chain, {"role": "assistant", "content": "There was an error getting that response. Try to break up your request into smaller parts. If the request was small, the chat likely got too long."}])
         setResponseLoading(false)
       })
       setInputValue('')

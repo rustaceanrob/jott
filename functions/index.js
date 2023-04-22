@@ -32,9 +32,10 @@ exports.getChainResponse = functions.runWith({ secrets: ['OPENAI']}).https.onCal
     const frames = data.frames
     const lang = data.lang
     if (frames !== "") {
-        chain.unshift({"role": "user", "content": "I am using " + frames})
+        chain.unshift({"role": "user", "content": "I am programming with " + lang + ". I am using " + frames + "."},)
+    } else {
+        chain.unshift({"role": "user", "content": "I am programming with " + lang + "."})
     }
-    chain.unshift({"role": "user", "content": "I am programming with " + lang + "."})
     chain.unshift({"role": "system", "content": chatCodeSystemMessage})
     functions.logger.log(chain)
     const configuration = new Configuration({

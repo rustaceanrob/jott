@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AiFillCopy } from 'react-icons/ai'
 import { BiSave } from 'react-icons/bi'
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { hopscotch } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { irBlack } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 export default function SystemChat({message, lang, isSnip, setDisplay, setPush}) {
     const [blocks, setBlocks] = useState([])
@@ -58,7 +58,7 @@ export default function SystemChat({message, lang, isSnip, setDisplay, setPush})
                                         </button>
                                     </div>
                                 </div>
-                                <SyntaxHighlighter className="border rounded-sm border-gray-700 text-sm" showLineNumbers={true} language={styledLang} style={hopscotch}>
+                                <SyntaxHighlighter className="border rounded-sm border-gray-700 text-sm" showLineNumbers={true} language={styledLang} style={irBlack}>
                                     {codes.trim()}
                                 </SyntaxHighlighter>
                             </div>

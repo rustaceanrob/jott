@@ -4,7 +4,7 @@ import Topbar from './Topbar'
 
 export default function Header({user, setFeature, handleSignOut}) {
   return (
-    <div className='flex flex-row bg-gradient-to-b from-gray-800 to-gray-950 justify-between items-center pl-5 pr-5 pt-2 sm:pt-4 border-b border-gray-700 pb-2 sm:pb-4 z-[10]'>
+    <div className='flex flex-row bg-gradient-to-b from-gray-900 to-gray-950 justify-between items-center pl-5 pr-5 pt-2 sm:pt-4 border-b border-gray-700 pb-2 sm:pb-4 z-[10]'>
         <div className='flex flex-row'>
             <Topbar setFeature={setFeature}/>
         </div>
